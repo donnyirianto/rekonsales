@@ -1,0 +1,2091 @@
+[START] Service Running (2022-04-24 11:53:07
+Pengecekan Mtran Toko: 2022-04-24 11:53:07
+G004 F2GB
+G004 F31M
+G004 F462
+G004 F652
+G004 F79A
+G004 FCSR
+G004 FDRR
+G004 FGIR
+G004 FHHA
+G004 FHTH
+G004 FJJI
+G004 FKHN
+G004 FKOR
+G004 FNBN
+G004 FNBU
+G004 FNDI
+G004 FPOO
+G004 FSIL
+G004 FSTV
+G004 FYUU
+G004 T1P8
+G004 T2D4
+G004 T3DS
+G004 T55P
+G004 T8FM
+G004 TAHL
+G004 TBWM
+G004 TCKL
+G004 TDD7
+G004 TEEB
+G004 TJDJ
+G004 TKAE
+G004 TKFW
+G004 TLD9
+G004 TLYJ
+G004 TMAU
+G004 TMJH
+G004 TMPQ
+G004 TNDX
+G004 TNI1
+G004 TNUC
+G004 TQND
+G004 TRDT
+G004 TRGU
+G004 TSES
+G004 TUEG
+G004 TUFJ
+G004 TUGS
+G004 TUTI
+G004 TVDP
+G004 TVLD
+G004 TVWI
+G004 TWEU
+G004 TWKE
+G004 TWUR
+G004 TWYL
+G004 TYSO
+G004 TYYI
+G004 TZAB
+G004 TZF8
+G004 TZTH
+10.41.72.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TNDX' as kdtk, 'BASUKI RAHMAT KASIYAN' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TNDX
+10.41.66.228 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TUFJ' as kdtk, 'ARJASA 2 - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TUFJ
+10.41.67.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TZF8' as kdtk, 'SROEDJI - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TZF8
+10.41.69.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FSIL' as kdtk, 'PECORO - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FSIL
+10.41.68.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TWUR' as kdtk, 'SUKOREJO BANGSALSARI - JE' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TWUR
+10.41.91.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TWYL' as kdtk, 'SUMBERKEDAWUNG LECES - PB' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TWYL
+10.41.72.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FNDI' as kdtk, 'KERTONEGORO - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FNDI
+10.41.79.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TCKL' as kdtk, 'SUMBERTAMAN - PROBOLINGGO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TCKL
+10.41.71.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FNBN' as kdtk, 'PUGER 11 - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FNBN
+10.41.74.228 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TKAE' as kdtk, 'DEMUNG - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TKAE
+10.41.71.164 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FHHA' as kdtk, 'RAYA BANGSALSARI - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FHHA
+10.41.75.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'T1P8' as kdtk, 'WIROWONGSO- JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko T1P8
+10.41.72.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FYUU' as kdtk, 'SONGGON - BANYUWANGI' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FYUU
+10.41.80.164 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FHTH' as kdtk, 'DRINGU KALIREJO - PROBOLI' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FHTH
+10.41.78.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TKFW' as kdtk, 'A. YANI 80 - BONDOWOSO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TKFW
+10.41.79.164 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TLYJ' as kdtk, 'SELOK AWAR - AWAR - LUMAJ' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TLYJ
+10.41.72.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'F652' as kdtk, 'BALUNG - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko F652
+10.41.79.66 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FSTV' as kdtk, 'CONGAPAN - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FSTV
+10.41.71.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TLD9' as kdtk, 'RAYA TAMANAN - BONDOWOSO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TLD9
+10.41.78.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TMJH' as kdtk, 'TALKANDANG - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TMJH
+10.41.69.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TNUC' as kdtk, 'KASIYAN - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TNUC
+10.41.68.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TSES' as kdtk, 'WONOJATI  - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TSES
+10.41.77.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FGIR' as kdtk, 'TOKO JAYA BERSAMA' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FGIR
+10.41.80.194 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FJJI' as kdtk, 'HASANUDIN KM 5 - BANYUWAN' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FJJI
+10.41.78.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TVWI' as kdtk, 'WARUJINGGO - PROBOLINGGO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TVWI
+10.41.71.228 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'T3DS' as kdtk, 'MENAMPU - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko T3DS
+10.41.66.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TUTI' as kdtk, 'BASUKI RAHMAD 77 - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TUTI
+10.41.72.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TWEU' as kdtk, 'BANGSALSARI - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TWEU
+10.41.66.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TQND' as kdtk, 'GRAHA CITRA MAS - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TQND
+10.41.65.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TNI1' as kdtk, 'RAYA MANGGAR - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TNI1
+10.41.77.228 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TAHL' as kdtk, 'PASIRIAN 252 - LUMAJANG' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TAHL
+10.41.66.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TUEG' as kdtk, 'STASIUN RAMBIPUJI - JEMBE' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TUEG
+10.41.66.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FDRR' as kdtk, 'SRIWIJAYA - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FDRR
+10.41.77.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TYSO' as kdtk, 'HOS COKROAMINOTO KADEMANG' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TYSO
+10.41.75.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'F79A' as kdtk, 'SEMPOLAN - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko F79A
+10.41.78.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TWKE' as kdtk, 'ALAS MALANG - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TWKE
+10.41.70.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'T8FM' as kdtk, 'TEMPUREJO 2 - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko T8FM
+10.41.70.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TZAB' as kdtk, 'PERHUTANI AMBULU - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TZAB
+10.41.78.36 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TYYI' as kdtk, 'TEGAL AMPEL - BONDOWOSO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TYYI
+10.41.69.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'T55P' as kdtk, 'ROWOTAMTU - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko T55P
+10.41.80.100 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TJDJ' as kdtk, 'SLAMET RIYADI - PROBOLING' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TJDJ
+10.41.80.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FKHN' as kdtk, 'JUANDA JAJAG - BANYUWANGI' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FKHN
+10.41.79.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TBWM' as kdtk, 'BAYUANGGA 20 B-C' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TBWM
+10.41.65.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'T2D4' as kdtk, 'LUMBA-LUMBA - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko T2D4
+10.41.77.164 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TVLD' as kdtk, 'WR. SUPRATMAN - PROBOLING' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TVLD
+10.41.64.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TMAU' as kdtk, 'KAMPUS JAWA - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TMAU
+10.41.69.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TRDT' as kdtk, 'SANTAWI - BONDOWOSO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TRDT
+10.41.68.164 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FKOR' as kdtk, 'GARAHAN - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FKOR
+10.41.74.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'F462' as kdtk, 'KALISAT - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko F462
+10.41.69.228 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FPOO' as kdtk, 'RAYA SUMBERJATI - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FPOO
+10.41.66.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TEEB' as kdtk, 'WIJAYA KUSUMA - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TEEB
+10.41.67.132 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FCSR' as kdtk, 'MUNDUREJO - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: read ECONNRESET
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ECONNRESET',
+  errno: -4077,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FCSR
+10.41.76.196 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'F2GB' as kdtk, 'BANYUGLUGUR - SITUBONDO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko F2GB
+10.41.71.4 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'F31M' as kdtk, 'GRUJUGAN - BONDOWOSO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko F31M
+10.41.79.98 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'FNBU' as kdtk, 'BLIMBINGSARI - BANYUWANGI' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko FNBU
+10.41.23.2 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TDD7' as kdtk, 'I-MOBILE JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TDD7
+192.168.24.52 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TMPQ' as kdtk, 'MAYANG - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TMPQ
+10.41.68.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TRGU' as kdtk, 'MAYANGAN - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TRGU
+10.41.20.66 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TUGS' as kdtk, 'NUSA INDAH - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TUGS
+10.41.70.68 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TVDP' as kdtk, 'KOTTA BLATER 59 - JEMBER' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TVDP
+10.41.24.98 kasir goCkeKArFYJYqmN9DHS/Uyn1HGgFpqrVI=REgE+tC2ZG pos 3306 SELECT  'G004' as kdcab, 'TZTH' as kdtk, 'SOEKARNO HATTA 77 - PBO' as nama_toko,
+            SHOP,
+            TANGGAL AS WDATE,
+            SUM(IF(RTYPE='J',GROSS,0)) AS TJUALN,
+            SUM(IF(RTYPE='D',GROSS,0)) AS TRETN,
+            SUM(IF(RTYPE='J',IF(SUB_BKP NOT IN ('P','W','G'),PPN,0),IF(SUB_BKP NOT IN ('P','W','G'),PPN*-1,0))) AS TPPN,            
+            SUM(IF(RTYPE='J',(QTY*HPP),(-QTY)*HPP)) AS THPP,
+            SUM(IF(RTYPE='J',GROSS-PPN,0)) AS TJUAL,
+            SUM(IF(RTYPE='D',GROSS-PPN,0)) AS TRET,
+            SUM(IF(RTYPE='J',QTY,0)) AS JQTY,
+            SUM(IF(RTYPE='D',QTY,0)) AS DQTY,
+            SUM(IF(RTYPE='J',IF(SUB_BKP IN ('P','W','G'),PPN,0),IF(SUB_BKP IN ('P','W','G'),PPN*-1,0))) AS BBS_PPN
+            FROM MTRAN
+            WHERE PLU NOT IN ('20052297','20052298','20052299','20052300','20052301','20052302','20054875','20054876','20054877','20054878','20054879','20054880')
+            AND (CATCODE NOT LIKE ('55%') AND CATCODE NOT LIKE ('055%') AND 
+            CATCODE NOT IN('54901','54902','54005','054901','054902','054005')) 
+            AND  (tanggal BETWEEN '2022-04-01' AND '2022-04-23')
+            GROUP BY TANGGAL
+             Error: connect ETIMEDOUT
+    at Object.createConnection (X:\node\rekonsales\node_modules\mysql2\promise.js:242:31)
+    at Object.zconn (X:\node\rekonsales\services\anydb.js:15:33)
+    at Object.vquery (X:\node\rekonsales\models\model.js:26:38)
+    at Object.run (X:\node\rekonsales\controller\eksekusiall.js:27:33)
+    at X:\node\rekonsales\controller\controller.js:15:49
+    at new Promise (<anonymous>)
+    at Object.runningAll (X:\node\rekonsales\controller\controller.js:13:32)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async X:\node\rekonsales\server.js:18:13 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}
+Gagal Koneksi Toko TZTH
+[
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses', 'Proses', 'Proses', 'Proses', 'Proses',
+  'Proses'
+]
